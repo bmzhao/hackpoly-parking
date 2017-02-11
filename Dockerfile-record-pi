@@ -1,0 +1,3 @@
+FROM gavrisco/rpi-opencv:v2.4.13
+COPY src/basicrecord.py /root/basicrecord.py
+ENTRYPOINT ["python", "/root/basicrecord.py"]

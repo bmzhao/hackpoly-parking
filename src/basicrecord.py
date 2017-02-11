@@ -19,7 +19,7 @@ if __name__ == '__main__':
     cap = cv2.VideoCapture(0)
     frame_width = int(cap.get(3))
     frame_height = int(cap.get(4))
-    cap.set(5,20)
+    cap.set(5,20) #set framerate
 
     out = cv2.VideoWriter(output_file, cv2.cv.CV_FOURCC(*'MJPG'), 20.0, (frame_width, frame_height), True)
 
