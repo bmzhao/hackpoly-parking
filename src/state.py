@@ -28,7 +28,7 @@ class Blob(object):
     def dist(self, other):
         return math.hypot(self.x - other.x, self.y - other.y)
 
-    def close_to(self, other, ratio=0.25):
+    def close_to(self, other, ratio=0.30):
         right = self.x + ratio * self.w/2
         left = self.x - ratio * self.w/2
 
@@ -41,13 +41,21 @@ class Blob(object):
         otherRight = other.x + other.w/2
         otherLeft = other.x - other.w/2
 
-        if (otherBottom < top and otherBottom > bottom) or \
-                (otherTop < top and otherTop > bottom) or \
-                (otherRight < right and otherRight > left) or \
-                (otherLeft < right and otherRight > left):
-            return True
-        else:
-            return False
+        merging = 0
+
+        if (otherBottom < top and otherBottom > bottom):
+            merging += 1
+        if (otherTop < top and otherTop > bottom):
+            merging +=1
+
+        if (otherRight < right and otherRight > left):
+            merging += 1
+
+        if (otherLeft < right and otherRight > left):
+            merging += 1
+
+        return merging >= 2
+
 
     def merge(self, other):
         right = self.x + self.w / 2

@@ -134,11 +134,11 @@ if __name__ == '__main__':
                     if new_blob_1 not in to_delete and new_blob_1 is not new_blob and \
                             new_blob.close_to(new_blob_1):
                         new_blob.merge(new_blob_1)
-                        # print 'merge occurred'
+                        print 'merge occurred'
                         to_delete.add(new_blob_1)
 
         for new_blob in to_delete:
-            # print 'deleted stuff'
+            print 'deleted stuff'
             new_blobs.remove(new_blob)
 
         for new_blob in new_blobs:
